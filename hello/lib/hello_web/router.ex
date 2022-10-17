@@ -17,12 +17,14 @@ defmodule HelloWeb.Router do
   scope "/", HelloWeb do
     pipe_through :browser
 
+    get "/hello/:name", HelloController, :world
     get "/", PageController, :index
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", HelloWeb do
-  #   pipe_through :api
+
+# scope "/api", HelloWeb do
+    #   pipe_through :api
   # end
 
   # Enables LiveDashboard only for development
