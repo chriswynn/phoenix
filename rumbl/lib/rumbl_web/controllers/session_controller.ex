@@ -8,15 +8,16 @@ defmodule RumblWeb.SessionController do
   end
 
   def create(
-  	conn,
-  	%{"session" => %{"username" => username, "password" => pass}}
-  ) do
+        conn,
+        %{"session" => %{"username" => username, "password" => pass}}
+      ) do
     case Rumbl.Accounts.authenticate_by_username_and_pass(username, pass) do
       {:ok, user} ->
         conn
         |> RumblWeb.Auth.login(user)
         |> put_flash(:info, "Welcome Back")
         |> redirect(to: Routes.page_path(conn, :index))
+
       {:error, _reason} ->
         conn
         |> put_flash(:error, "Invalid username/password combination")
