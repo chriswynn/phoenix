@@ -5,6 +5,7 @@ defmodule RumblWeb.VideoController do
 
   alias Rumbl.Multimedia
   alias Rumbl.Multimedia.Video
+  alias Rumbl.Accounts
 
   def action(conn, _) do
     args = [conn, conn.params, conn.assigns.current_user]
